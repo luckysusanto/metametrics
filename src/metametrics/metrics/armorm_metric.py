@@ -109,7 +109,7 @@ class ArmoRMMetric(TextBaseMetric):
                 scores.append(score)
             except Exception as e:
                 logger.error(f"Error computing score: {e}. Assigning default score of -99 for all attributes.")
-                scores.append({attr: -99 for attr in self.scoring_attributes})
+                raise RuntimeError(f"Failed to compute scores due to: {e}")
 
         return scores
 
